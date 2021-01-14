@@ -7,18 +7,36 @@ import base64
 from lxml import etree
 
 from odoo import fields
+from odoo.tests.common import SavepointCase
 from odoo.tools import float_compare
 
-from odoo.addons.account.tests.account_test_multi_company_no_chart import (
-    TestAccountMultiCompanyNoChartCommon,
-)
 
-
-class TestSDDBase(TestAccountMultiCompanyNoChartCommon):
+class TestSDDBase(SavepointCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
         self = cls
+        self.company_B = self.env["res.company"].create({"name": "Company B"})
+        user_type_payable = self.env.ref("account.data_account_type_payable")
+        self.account_payable_company_B = self.env["account.account"].create(
+            {
+                "code": "NC1110",
+                "name": "Test Payable Account Company B",
+                "user_type_id": user_type_payable.id,
+                "reconcile": True,
+                "company_id": self.company_B.id,
+            }
+        )
+        user_type_receivable = self.env.ref("account.data_account_type_receivable")
+        self.account_receivable_company_B = self.env["account.account"].create(
+            {
+                "code": "NC1111",
+                "name": "Test Receivable Account Company B",
+                "user_type_id": user_type_receivable.id,
+                "reconcile": True,
+                "company_id": self.company_B.id,
+            }
+        )
         self.company = self.env["res.company"]
         self.account_model = self.env["account.account"]
         self.journal_model = self.env["account.journal"]
@@ -50,9 +68,9 @@ class TestSDDBase(TestAccountMultiCompanyNoChartCommon):
         )
         (self.partner_agrolait + self.partner_c2c).write(
             {
-                "company_id": cls.main_company.id,
-                "property_account_payable_id": cls.account_payable_company_B.id,
-                "property_account_receivable_id": cls.account_receivable_company_B.id,
+                "company_id": self.main_company.id,
+                "property_account_payable_id": self.account_payable_company_B.id,
+                "property_account_receivable_id": self.account_receivable_company_B.id,
             }
         )
         self.company_bank = self.env.ref("account_payment_mode.main_company_iban").copy(
@@ -110,6 +128,123 @@ class TestSDDBase(TestAccountMultiCompanyNoChartCommon):
         )
         # Trigger the recompute of account type on res.partner.bank
         self.partner_bank_model.search([])._compute_acc_type()
+
+    @classmethod
+    def setUpAdditionalAccounts(cls):
+        """ Set up some addionnal accounts: expenses, revenue, ... """
+        user_type_income = cls.env.ref("account.data_account_type_direct_costs")
+        cls.account_income = cls.env["account.account"].create(
+            {
+                "code": "NC1112",
+                "name": "Sale - Test Account",
+                "user_type_id": user_type_income.id,
+            }
+        )
+        user_type_expense = cls.env.ref("account.data_account_type_expenses")
+        cls.account_expense = cls.env["account.account"].create(
+            {
+                "code": "NC1113",
+                "name": "HR Expense - Test Purchase Account",
+                "user_type_id": user_type_expense.id,
+            }
+        )
+        user_type_revenue = cls.env.ref("account.data_account_type_revenue")
+        cls.account_revenue = cls.env["account.account"].create(
+            {
+                "code": "NC1114",
+                "name": "Sales - Test Sales Account",
+                "user_type_id": user_type_revenue.id,
+                "reconcile": True,
+            }
+        )
+        user_type_income = cls.env.ref("account.data_account_type_direct_costs")
+        cls.account_income_company_B = cls.env["account.account"].create(
+            {
+                "code": "NC1112",
+                "name": "Sale - Test Account Company B",
+                "user_type_id": user_type_income.id,
+                "company_id": cls.company_B.id,
+            }
+        )
+        user_type_expense = cls.env.ref("account.data_account_type_expenses")
+        cls.account_expense_company_B = cls.env["account.account"].create(
+            {
+                "code": "NC1113",
+                "name": "HR Expense - Test Purchase Account Company B",
+                "user_type_id": user_type_expense.id,
+                "company_id": cls.company_B.id,
+            }
+        )
+        user_type_revenue = cls.env.ref("account.data_account_type_revenue")
+        cls.account_revenue_company_B = cls.env["account.account"].create(
+            {
+                "code": "NC1114",
+                "name": "Sales - Test Sales Account Company B",
+                "user_type_id": user_type_revenue.id,
+                "reconcile": True,
+                "company_id": cls.company_B.id,
+            }
+        )
+
+    @classmethod
+    def setUpAccountJournal(cls):
+        """ Set up some journals: sale, purchase, ... """
+        cls.journal_purchase = cls.env["account.journal"].create(
+            {
+                "name": "Purchase Journal - Test",
+                "code": "AJ-PURC",
+                "type": "purchase",
+                "company_id": cls.env.user.company_id.id,
+                "payment_debit_account_id": cls.account_expense.id,
+                "payment_credit_account_id": cls.account_expense.id,
+            }
+        )
+        cls.journal_sale = cls.env["account.journal"].create(
+            {
+                "name": "Sale Journal - Test",
+                "code": "AJ-SALE",
+                "type": "sale",
+                "company_id": cls.env.user.company_id.id,
+                "payment_debit_account_id": cls.account_income.id,
+                "payment_credit_account_id": cls.account_income.id,
+            }
+        )
+        cls.journal_general = cls.env["account.journal"].create(
+            {
+                "name": "General Journal - Test",
+                "code": "AJ-GENERAL",
+                "type": "general",
+                "company_id": cls.env.user.company_id.id,
+            }
+        )
+        cls.journal_purchase_company_B = cls.env["account.journal"].create(
+            {
+                "name": "Purchase Journal Company B - Test",
+                "code": "AJ-PURC",
+                "type": "purchase",
+                "company_id": cls.company_B.id,
+                "payment_debit_account_id": cls.account_expense_company_B.id,
+                "payment_credit_account_id": cls.account_expense_company_B.id,
+            }
+        )
+        cls.journal_sale_company_B = cls.env["account.journal"].create(
+            {
+                "name": "Sale Journal Company B - Test",
+                "code": "AJ-SALE",
+                "type": "sale",
+                "company_id": cls.company_B.id,
+                "payment_debit_account_id": cls.account_income_company_B.id,
+                "payment_credit_account_id": cls.account_income_company_B.id,
+            }
+        )
+        cls.journal_general_company_B = cls.env["account.journal"].create(
+            {
+                "name": "General Journal Company B - Test",
+                "code": "AJ-GENERAL",
+                "type": "general",
+                "company_id": cls.company_B.id,
+            }
+        )
 
     def check_sdd(self):
         self.mandate2.recurrent_sequence_type = "first"
@@ -194,7 +329,7 @@ class TestSDDBase(TestAccountMultiCompanyNoChartCommon):
         payment_order.generated2uploaded()
         self.assertEqual(payment_order.state, "uploaded")
         for inv in [invoice1, invoice2]:
-            self.assertEqual(inv.invoice_payment_state, "paid")
+            self.assertEqual(inv.payment_state, "paid")
         self.assertEqual(self.mandate2.recurrent_sequence_type, "recurring")
         return
 
