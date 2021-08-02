@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 ##############################################################################
 #
 #    Account Payment Blocking module for Odoo
@@ -21,23 +20,18 @@
 #
 ##############################################################################
 {
-    'name': 'account banking payment blocking',
-    'version': '8.0.1.0.0',
-    'category': 'Banking addons',
-    'summary': """
+    "name": "account banking payment blocking",
+    "version": "8.0.1.0.0",
+    "category": "Banking addons",
+    "summary": """
         Prevent invoices under litigation to be proposed in payment orders.
     """,
-    'author': 'ACSONE SA/NV,Odoo Community Association (OCA)',
-    'website': 'http://acsone.eu',
-    'depends': [
-        'base',
-        'account_banking_payment_export'
-    ],
-    'data': [
-        'view/account_invoice_view.xml'
-    ],
-    'installable': False,
-    'application': False,
-    'auto_install': False,
-    'license': 'AGPL-3',
+    "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
+    "website": "https://github.com/OCA/bank-payment",
+    "depends": ["base", "account_banking_payment_export"],
+    "data": ["view/account_invoice_view.xml"],
+    "installable": False,
+    "application": False,
+    "auto_install": False,
+    "license": "AGPL-3",
 }
