@@ -65,7 +65,7 @@ class AccountBankingMandate(models.Model):
         string="Date of Signature of the Mandate",
         tracking=50,
     )
-    scan = fields.Binary(string="Scan of the Mandate")
+    scan = fields.Binary(string="Scan of the Mandate", attachment=True)
     last_debit_date = fields.Date(string="Date of the Last Debit", readonly=True)
     state = fields.Selection(
         [
@@ -86,6 +86,13 @@ class AccountBankingMandate(models.Model):
         string="Related Payment Lines",
     )
     payment_line_ids_count = fields.Integer(compute="_compute_payment_line_ids_count")
+
+    attachment_ids = fields.One2many(
+        comodel_name="ir.attachment",
+        inverse_name="res_id",
+        domain=[("res_model", "=", "account.banking.mandate")],
+        string="Media Attachments",
+    )
 
     _sql_constraints = [
         (

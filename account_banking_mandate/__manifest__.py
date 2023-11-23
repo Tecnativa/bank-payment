@@ -2,6 +2,7 @@
 # Copyright 2015-2020 Akretion - Alexis de Lattre <alexis.delattre@akretion.com>
 # Copyright 2017 Tecnativa - Carlos Dauden
 # Copyright 2014-2022 Tecnativa - Pedro M. Baeza
+# Copyright 2023 Tecnativa - Carolina Fernandez
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 {
@@ -16,7 +17,7 @@
     "Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/bank-payment",
     "category": "Banking addons",
-    "depends": ["account_payment_order"],
+    "depends": ["account_payment_order", "portal"],
     "data": [
         "views/account_banking_mandate_view.xml",
         "views/account_payment_method.xml",
@@ -24,6 +25,7 @@
         "views/account_payment_line.xml",
         "views/res_partner_bank_view.xml",
         "views/res_partner.xml",
+        "views/account_banking_mandate_templates.xml",
         "data/mandate_reference_sequence.xml",
         "security/mandate_security.xml",
         "security/ir.model.access.csv",

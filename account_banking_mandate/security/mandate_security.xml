@@ -7,6 +7,7 @@
     <record id="account_banking_mandate_rule" model="ir.rule">
         <field name="name">Banking Mandate multi-company</field>
         <field name="model_id" ref="model_account_banking_mandate" />
+        <field name="global" eval="True" />
         <field
             name="domain_force"
         >['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
@@ -15,4 +16,13 @@
         <field name="perm_unlink" eval="True" />
         <field name="perm_create" eval="True" />
     </record>
+        <!-- Portal for mandates -->
+        <record id="account_banking_mandate_rule_portal" model="ir.rule">
+            <field name="name">Portal Personal Banking Mandates</field>
+            <field name="model_id" ref="model_account_banking_mandate" />
+            <field name="domain_force">['|',
+                ('partner_id', 'child_of', [user.commercial_partner_id.id]),
+                ('message_partner_ids','child_of',[user.commercial_partner_id.id])]</field>
+            <field name="groups" eval="[(4, ref('base.group_portal'))]" />
+        </record>
 </odoo>

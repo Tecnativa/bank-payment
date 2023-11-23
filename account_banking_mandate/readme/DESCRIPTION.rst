@@ -6,3 +6,5 @@ authorization that the bank account owner gives to a company for a
 specific operation (such as direct debit).
 You can setup mandates from the accounting menu or directly from a bank
 account.
+
+Customer will be able to see his own mandates in portal
