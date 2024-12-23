@@ -16,3 +16,9 @@ class AccountMove(models.Model):
             selected.write({"selected_for_payment": False})
         if unselected:
             unselected.write({"selected_for_payment": True})
+
+    def action_register_payment(self):
+        invoices = self.filtered(lambda inv: inv.selected_for_payment)
+        if invoices:
+            invoices.write({"selected_for_payment": False})
+        return super().action_register_payment()
