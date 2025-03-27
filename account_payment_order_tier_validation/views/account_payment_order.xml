@@ -2,7 +2,6 @@
 <!-- Copyright 2021 - TODAY, Marcel Savegnago <marcel.savegnago@escodoo.com.br>
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
-
     <record model="ir.ui.view" id="account_payment_order_search_view">
         <field
             name="name"
@@ -29,5 +28,4 @@
             </filter>
         </field>
     </record>
-
 </odoo>
