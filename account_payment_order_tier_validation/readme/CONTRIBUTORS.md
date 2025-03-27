@@ -2,3 +2,4 @@
   - Marcel Savegnago
 - XCG Consulting, part of [Orbeet](https://orbeet.io/):
   - Vincent Hatakeyama
+- Carlos Lopez \<<celm1990@gmail.com>\>

@@ -2,12 +2,15 @@
 # Copyright 2023, XCG Consulting
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
+from odoo import Command
 from odoo.exceptions import ValidationError
-from odoo.tests import common, tagged
+from odoo.tests import tagged
+
+from odoo.addons.base.tests.common import BaseCommon
 
 
 @tagged("-at_install", "post_install")
-class TestPaymentOrderTierValidation(common.TransactionCase):
+class TestPaymentOrderTierValidation(BaseCommon):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
@@ -86,9 +89,7 @@ class TestPaymentOrderTierValidation(common.TransactionCase):
                 "journal_id": self.bank_journal.id,
                 "date_prefered": "now",
                 "payment_line_ids": [
-                    (
-                        0,
-                        0,
+                    Command.create(
                         {
                             "partner_id": self.partner.id,
                             "amount_currency": 1000,

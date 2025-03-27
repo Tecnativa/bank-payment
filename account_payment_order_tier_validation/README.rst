@@ -98,6 +98,8 @@ Contributors
 
   - Vincent Hatakeyama
 
+- Carlos Lopez <celm1990@gmail.com>
+
 Maintainers
 -----------
 
