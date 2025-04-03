@@ -16,7 +16,6 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: Weblate 4.3.2\n"
 
-
 #. module: account_payment_order
 #. odoo-python
 #: code:addons/account_payment_order/models/account_move.py:0

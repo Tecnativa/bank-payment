@@ -26,8 +26,8 @@ msgstr ""
 msgid ""
 "%(count)d payment lines added to the existing draft payment order "
 "%(payorder_link)s."
-msgstr "%(count)d líneas de pago añadidas a la orden existente "
-"%(payorder_link)s."
+msgstr ""
+"%(count)d líneas de pago añadidas a la orden existente %(payorder_link)s."
 
 #. module: account_payment_order
 #. odoo-python
@@ -37,8 +37,8 @@ msgid ""
 "%(count)d payment lines added to the new draft payment order "
 "%(payorder_link)s, which has been automatically created."
 msgstr ""
-"%(count)d líneas de pago añadidas a la nueva orden "
-"%(payorder_link)s, que ha sido creada automáticamente."
+"%(count)d líneas de pago añadidas a la nueva orden %(payorder_link)s, que ha "
+"sido creada automáticamente."
 
 #. module: account_payment_order
 #: model_terms:ir.ui.view,arch_db:account_payment_order.print_account_payment_order_document
