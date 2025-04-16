@@ -22,6 +22,7 @@ Available addons
 addon | version | maintainers | summary
 --- | --- | --- | ---
 [account_invoice_select_for_payment](account_invoice_select_for_payment/) | 18.0.1.0.0 |  | Account Invoice Select for Payment
+[account_payment_mode](account_payment_mode/) | 18.0.1.0.0 |  | Account Payment Mode
 
 [//]: # (end addons)
 
