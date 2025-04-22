@@ -21,7 +21,7 @@ Available addons
 ----------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
-[account_banking_mandate](account_banking_mandate/) | 18.0.1.0.0 |  | Banking mandates
+[account_banking_mandate](account_banking_mandate/) | 18.0.1.0.1 |  | Banking mandates
 [account_banking_mandate_contact](account_banking_mandate_contact/) | 18.0.1.0.0 |  | Assign specific banking mandates in contact level
 [account_invoice_select_for_payment](account_invoice_select_for_payment/) | 18.0.1.0.0 |  | Account Invoice Select for Payment
 [account_payment_mode](account_payment_mode/) | 18.0.1.0.0 |  | Account Payment Mode
