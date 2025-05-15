@@ -6,7 +6,7 @@
         <field name="model">res.partner</field>
         <field
             name="inherit_id"
-            ref="account_payment_partner.view_partner_property_form"
+            ref="account_banking_mandate_contact.view_partner_property_form"
         />
         <field name="arch" type="xml">
             <field name="contact_mandate_id" position="after">
