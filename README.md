@@ -25,12 +25,12 @@ addon | version | maintainers | summary
 [account_banking_mandate_contact](account_banking_mandate_contact/) | 18.0.1.0.0 |  | Assign specific banking mandates in contact level
 [account_banking_pain_base](account_banking_pain_base/) | 18.0.1.0.0 |  | Base module for PAIN file generation
 [account_invoice_select_for_payment](account_invoice_select_for_payment/) | 18.0.1.0.0 |  | Account Invoice Select for Payment
-[account_payment_mode](account_payment_mode/) | 18.0.1.0.0 |  | Account Payment Mode
+[account_payment_mode](account_payment_mode/) | 18.0.1.0.1 |  | Account Payment Mode
 [account_payment_order](account_payment_order/) | 18.0.1.0.0 |  | Account Payment Order
 [account_payment_partner](account_payment_partner/) | 18.0.1.0.1 |  | Adds payment mode on partners and invoices
 [account_payment_purchase](account_payment_purchase/) | 18.0.1.0.0 |  | Adds Bank Account and Payment Mode on Purchase Orders
 [account_payment_purchase_stock](account_payment_purchase_stock/) | 18.0.1.0.0 |  | Integrate Account Payment Purchase with Stock
-[account_payment_sale](account_payment_sale/) | 18.0.1.0.0 |  | Adds payment mode on sale orders
+[account_payment_sale](account_payment_sale/) | 18.0.1.0.1 |  | Adds payment mode on sale orders
 
 [//]: # (end addons)
 
