@@ -17,13 +17,13 @@ Account Vendor Bank Account Default Purchase
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fbank--payment-lightgray.png?logo=github
-    :target: https://github.com/OCA/bank-payment/tree/17.0/account_vendor_bank_account_default_purchase
+    :target: https://github.com/OCA/bank-payment/tree/18.0/account_vendor_bank_account_default_purchase
     :alt: OCA/bank-payment
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/bank-payment-17-0/bank-payment-17-0-account_vendor_bank_account_default_purchase
+    :target: https://translation.odoo-community.org/projects/bank-payment-18-0/bank-payment-18-0-account_vendor_bank_account_default_purchase
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runboat-Try%20me-875A7B.png
-    :target: https://runboat.odoo-community.org/builds?repo=OCA/bank-payment&target_branch=17.0
+    :target: https://runboat.odoo-community.org/builds?repo=OCA/bank-payment&target_branch=18.0
     :alt: Try me on Runboat
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
@@ -41,16 +41,16 @@ Configuration
 
 To configure this module, you need to:
 
--  Go to a partner form view, and edit the Default Bank Account in the
-   Sales and Purchase tab. The partner must be set as a 'company', or as
-   an individual without a parent company.
+- Go to a partner form view, and edit the Default Bank Account in the
+  Sales and Purchase tab. The partner must be set as a 'company', or as
+  an individual without a parent company.
 
-   **Note:** If you do not set this value, it will be equal to the first
-   bank account created in the contact. This is the standard behaviour
-   of Odoo
+  **Note:** If you do not set this value, it will be equal to the first
+  bank account created in the contact. This is the standard behaviour of
+  Odoo
 
--  You can disable the default bank account option at contact level,
-   unmarking the "Has Default Bank Account" check.
+- You can disable the default bank account option at contact level,
+  unmarking the "Has Default Bank Account" check.
 
 Usage
 =====
@@ -66,9 +66,9 @@ To use this module, you need to:
 Known issues / Roadmap
 ======================
 
--  This module depends on account_payment_purchase. If the payment mode
-   of the purchase has a payment method that does not require a bank
-   account, the default bank account will be empty.
+- This module depends on account_payment_purchase. If the payment mode
+  of the purchase has a payment method that does not require a bank
+  account, the default bank account will be empty.
 
 Bug Tracker
 ===========
@@ -76,7 +76,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/bank-payment/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/bank-payment/issues/new?body=module:%20account_vendor_bank_account_default_purchase%0Aversion:%2017.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/bank-payment/issues/new?body=module:%20account_vendor_bank_account_default_purchase%0Aversion:%2018.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -91,11 +91,11 @@ Authors
 Contributors
 ------------
 
--  `Sygel <https://www.sygel.es>`__:
+- `Sygel <https://www.sygel.es>`__:
 
-   -  Harald Panten
-   -  Valentin Vinagre
-   -  Alberto Martínez
+  - Harald Panten
+  - Valentin Vinagre
+  - Alberto Martínez
 
 Maintainers
 -----------
@@ -118,6 +118,6 @@ Current `maintainer <https://odoo-community.org/page/maintainer-role>`__:
 
 |maintainer-tisho99| 
 
-This module is part of the `OCA/bank-payment <https://github.com/OCA/bank-payment/tree/17.0/account_vendor_bank_account_default_purchase>`_ project on GitHub.
+This module is part of the `OCA/bank-payment <https://github.com/OCA/bank-payment/tree/18.0/account_vendor_bank_account_default_purchase>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.
