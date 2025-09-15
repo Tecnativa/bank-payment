@@ -17,6 +17,14 @@ class TestPaymentOrderTranserJournal(AccountTestInvoicingCommon):
             "in_invoice", invoice_date=today, products=cls.product_a
         )
         cls.bank_journal = cls.company_data["default_journal_bank"]
+        cls.company_partner_bank = cls.env["res.partner.bank"].create(
+            {
+                "acc_number": "company_1234",
+                "partner_id": cls.env.company.partner_id.id,
+                "allow_out_payment": True,
+            }
+        )
+        cls.bank_journal.bank_account_id = cls.company_partner_bank.id
         cls.misc_journal = cls.company_data["default_journal_misc"]
         cls.payment_mode = cls.env["account.payment.mode"].create(
             {
