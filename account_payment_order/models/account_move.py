@@ -128,7 +128,7 @@ class AccountMove(models.Model):
                     % move.name
                 )
             payment_lines = applicable_lines.payment_line_ids.filtered(
-                lambda l: l.state in ("draft", "open", "generated")
+                lambda l: l.state in ("draft", "open", "generated", "uploaded")
             )
             if payment_lines:
                 raise UserError(

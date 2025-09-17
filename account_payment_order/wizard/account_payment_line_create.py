@@ -127,11 +127,12 @@ class AccountPaymentLineCreate(models.TransientModel):
                 ("account_id.internal_type", "in", ["receivable", "payable"]),
             ]
         # Exclude lines that are already in a non-cancelled
-        # and non-uploaded payment order; lines that are in a
-        # uploaded payment order are proposed if they are not reconciled,
+        # and non-uploaded payment order; Now lines that are in a
+        # uploaded payment order are not proposed if they are not reconciled,
+        # this could end in multiple payment for same bill
         paylines = self.env["account.payment.line"].search(
             [
-                ("state", "in", ("draft", "open", "generated")),
+                ("state", "in", ("draft", "open", "generated", "uploaded")),
                 ("move_line_id", "!=", False),
             ]
         )
