@@ -283,12 +283,12 @@ class AccountPaymentOrder(models.Model):
             ) from None
         return True
 
-    def finalize_sepa_file_creation(self, xml_root, gen_args):
+    def finalize_pain_file_creation(self, xml_root, gen_args):
         xml_string = etree.tostring(
             xml_root, pretty_print=True, encoding="UTF-8", xml_declaration=True
         )
         logger.debug(
-            "Generated SEPA XML file in format %s below" % gen_args["pain_flavor"]
+            "Generated pain XML file in format %s below" % gen_args["pain_flavor"]
         )
         logger.debug(xml_string)
         self._validate_xml(xml_string, gen_args)
