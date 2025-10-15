@@ -77,15 +77,15 @@ Authors
 Contributors
 ------------
 
--  `Tecnativa <https://www.tecnativa.com>`__:
+- `Tecnativa <https://www.tecnativa.com>`__:
 
-   -  Carlos Dauden
-   -  Ernesto Tejeda
-   -  Pedro M. Baeza
+  - Carlos Dauden
+  - Ernesto Tejeda
+  - Pedro M. Baeza
 
--  `Sygel <https://www.sygel.es>`__:
+- `Sygel <https://www.sygel.es>`__:
 
-   -  Alberto Martínez
+  - Alberto Martínez
 
 Maintainers
 -----------
