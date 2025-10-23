@@ -1,6 +1,6 @@
 [project]
 name = "odoo-addons-oca-bank-payment"
-version = "18.0.20251005.0"
+version = "18.0.20251023.0"
 dependencies = [
     "odoo-addon-account_banking_mandate==18.0.*",
     "odoo-addon-account_banking_mandate_contact==18.0.*",
@@ -13,6 +13,7 @@ dependencies = [
     "odoo-addon-account_payment_order==18.0.*",
     "odoo-addon-account_payment_order_grouped_output==18.0.*",
     "odoo-addon-account_payment_order_notification==18.0.*",
+    "odoo-addon-account_payment_order_return==18.0.*",
     "odoo-addon-account_payment_order_tier_validation==18.0.*",
     "odoo-addon-account_payment_partner==18.0.*",
     "odoo-addon-account_payment_purchase==18.0.*",
