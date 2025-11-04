@@ -30,12 +30,12 @@ addon | version | maintainers | summary
 [account_banking_sepa_direct_debit](account_banking_sepa_direct_debit/) | 18.0.1.1.0 |  | Create SEPA files for Direct Debit
 [account_invoice_select_for_payment](account_invoice_select_for_payment/) | 18.0.1.0.0 |  | Account Invoice Select for Payment
 [account_payment_mode](account_payment_mode/) | 18.0.1.0.1 |  | Account Payment Mode
-[account_payment_order](account_payment_order/) | 18.0.1.2.0 |  | Account Payment Order
+[account_payment_order](account_payment_order/) | 18.0.1.2.1 |  | Account Payment Order
 [account_payment_order_grouped_output](account_payment_order_grouped_output/) | 18.0.1.0.0 |  | Account Payment Order - Generate grouped moves
 [account_payment_order_notification](account_payment_order_notification/) | 18.0.1.0.0 | <a href='https://github.com/victoralmau'><img src='https://github.com/victoralmau.png' width='32' height='32' style='border-radius:50%;' alt='victoralmau'/></a> | Account Payment Order Notification
 [account_payment_order_return](account_payment_order_return/) | 18.0.1.0.0 |  | Account Payment Order Return
 [account_payment_order_tier_validation](account_payment_order_tier_validation/) | 18.0.1.0.0 | <a href='https://github.com/marcelsavegnago'><img src='https://github.com/marcelsavegnago.png' width='32' height='32' style='border-radius:50%;' alt='marcelsavegnago'/></a> | Extends the functionality of Payment Orders to support a tier validation process.
-[account_payment_partner](account_payment_partner/) | 18.0.1.0.1 |  | Adds payment mode on partners and invoices
+[account_payment_partner](account_payment_partner/) | 18.0.1.0.2 |  | Adds payment mode on partners and invoices
 [account_payment_purchase](account_payment_purchase/) | 18.0.1.0.0 |  | Adds Bank Account and Payment Mode on Purchase Orders
 [account_payment_purchase_stock](account_payment_purchase_stock/) | 18.0.1.0.0 |  | Integrate Account Payment Purchase with Stock
 [account_payment_sale](account_payment_sale/) | 18.0.1.0.1 |  | Adds payment mode on sale orders
