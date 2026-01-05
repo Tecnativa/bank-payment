@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2024-09-19 17:06+0000\n"
+"PO-Revision-Date: 2026-01-05 20:42+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.6.2\n"
+"X-Generator: Weblate 5.10.4\n"
 
 #. module: account_payment_order_vendor_email
 #: model:mail.template,body_html:account_payment_order_vendor_email.ach_payment_email_template
@@ -582,7 +582,7 @@ msgstr "Non è possibile inviare una e-mail al fornitore %s."
 #: code:addons/account_payment_order_vendor_email/models/account_payment_mode.py:0
 #, python-format
 msgid "An email is sent successfully to %s vendor."
-msgstr ""
+msgstr "È stata inviata con successo una e-mail al fornitore %s."
 
 #. module: account_payment_order_vendor_email
 #: model:ir.model.fields,field_description:account_payment_order_vendor_email.field_account_payment_line__discount_amount
