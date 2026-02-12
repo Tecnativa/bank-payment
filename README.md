@@ -26,7 +26,7 @@ addon | version | maintainers | summary
 [account_banking_mandate_sale](account_banking_mandate_sale/) | 16.0.1.0.0 | <a href='https://github.com/alexis-via'><img src='https://github.com/alexis-via.png' width='32' height='32' style='border-radius:50%;' alt='alexis-via'/></a> | Adds mandates on sale orders
 [account_banking_mandate_sale_contact](account_banking_mandate_sale_contact/) | 16.0.1.0.1 | <a href='https://github.com/tisho99'><img src='https://github.com/tisho99.png' width='32' height='32' style='border-radius:50%;' alt='tisho99'/></a> | Add a specific contact mandate to sale orders
 [account_banking_pain_base](account_banking_pain_base/) | 16.0.1.2.3 |  | Base module for PAIN file generation
-[account_banking_sepa_credit_transfer](account_banking_sepa_credit_transfer/) | 16.0.1.1.6 |  | Create SEPA XML files for Credit Transfers
+[account_banking_sepa_credit_transfer](account_banking_sepa_credit_transfer/) | 16.0.1.1.7 |  | Create SEPA XML files for Credit Transfers
 [account_banking_sepa_direct_debit](account_banking_sepa_direct_debit/) | 16.0.1.4.6 |  | Create SEPA files for Direct Debit
 [account_payment_method_fs_storage](account_payment_method_fs_storage/) | 16.0.1.0.3 |  | Add the possibility to specify on the payment method, a storage where files generated will be pushed to upon payment
 [account_payment_mode](account_payment_mode/) | 16.0.2.0.0 |  | Account Payment Mode
@@ -36,8 +36,8 @@ addon | version | maintainers | summary
 [account_payment_order_return](account_payment_order_return/) | 16.0.1.0.1 |  | Account Payment Order Return
 [account_payment_order_tier_validation](account_payment_order_tier_validation/) | 16.0.1.1.0 | <a href='https://github.com/marcelsavegnago'><img src='https://github.com/marcelsavegnago.png' width='32' height='32' style='border-radius:50%;' alt='marcelsavegnago'/></a> | Extends the functionality of Payment Orders to support a tier validation process.
 [account_payment_order_vendor_email](account_payment_order_vendor_email/) | 16.0.1.0.1 | <a href='https://github.com/ursais'><img src='https://github.com/ursais.png' width='32' height='32' style='border-radius:50%;' alt='ursais'/></a> | Account Payment Order Email
-[account_payment_partner](account_payment_partner/) | 16.0.1.2.7 |  | Adds payment mode on partners and invoices
-[account_payment_purchase](account_payment_purchase/) | 16.0.2.0.5 |  | Adds Bank Account and Payment Mode on Purchase Orders
+[account_payment_partner](account_payment_partner/) | 16.0.1.2.8 |  | Adds payment mode on partners and invoices
+[account_payment_purchase](account_payment_purchase/) | 16.0.2.0.6 |  | Adds Bank Account and Payment Mode on Purchase Orders
 [account_payment_purchase_stock](account_payment_purchase_stock/) | 16.0.1.0.1 |  | Integrate Account Payment Purchase with Stock
 [account_payment_sale](account_payment_sale/) | 16.0.1.0.7 |  | Adds payment mode on sale orders
 
