@@ -1,4 +1,4 @@
-# Copyright 2026 Engenere - Felipe Zago Rodrigues
+# Copyright 2026 Engenere - Felipe Motter Pereira
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from odoo import fields, models
