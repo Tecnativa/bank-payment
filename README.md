@@ -36,7 +36,7 @@ addon | version | maintainers | summary
 [account_payment_order_return](account_payment_order_return/) | 16.0.1.0.1 |  | Account Payment Order Return
 [account_payment_order_tier_validation](account_payment_order_tier_validation/) | 16.0.1.1.0 | <a href='https://github.com/marcelsavegnago'><img src='https://github.com/marcelsavegnago.png' width='32' height='32' style='border-radius:50%;' alt='marcelsavegnago'/></a> | Extends the functionality of Payment Orders to support a tier validation process.
 [account_payment_order_vendor_email](account_payment_order_vendor_email/) | 16.0.1.0.1 | <a href='https://github.com/ursais'><img src='https://github.com/ursais.png' width='32' height='32' style='border-radius:50%;' alt='ursais'/></a> | Account Payment Order Email
-[account_payment_partner](account_payment_partner/) | 16.0.1.2.8 |  | Adds payment mode on partners and invoices
+[account_payment_partner](account_payment_partner/) | 16.0.1.2.9 |  | Adds payment mode on partners and invoices
 [account_payment_purchase](account_payment_purchase/) | 16.0.2.0.6 |  | Adds Bank Account and Payment Mode on Purchase Orders
 [account_payment_purchase_stock](account_payment_purchase_stock/) | 16.0.1.0.1 |  | Integrate Account Payment Purchase with Stock
 [account_payment_sale](account_payment_sale/) | 16.0.1.0.7 |  | Adds payment mode on sale orders
