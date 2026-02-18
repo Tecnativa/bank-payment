@@ -522,7 +522,7 @@ class TestAccountPaymentPartner(TransactionCase):
         )
         trusted_bank = self.env["res.partner.bank"].create(
             {
-                "acc_number": "BE32121212121212",
+                "acc_number": "es1299999999509999999999",
                 "partner_id": partner_no_mode.id,
                 "allow_out_payment": True,
             }
