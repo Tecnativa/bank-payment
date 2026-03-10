@@ -21,6 +21,7 @@ Available addons
 ----------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
+[account_banking_international_credit_transfer](account_banking_international_credit_transfer/) | 17.0.1.0.0 |  | Create PAIN XML files for International Credit Transfers
 [account_banking_mandate](account_banking_mandate/) | 17.0.1.0.4 |  | Banking mandates
 [account_banking_mandate_contact](account_banking_mandate_contact/) | 17.0.1.1.2 |  | Assign specific banking mandates in contact level
 [account_banking_mandate_sale](account_banking_mandate_sale/) | 17.0.1.0.0 | <a href='https://github.com/alexis-via'><img src='https://github.com/alexis-via.png' width='32' height='32' style='border-radius:50%;' alt='alexis-via'/></a> | Adds mandates on sale orders
