@@ -5,12 +5,20 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 import base64
+import importlib.util
 import time
+from pathlib import Path
+from types import SimpleNamespace
+from unittest.mock import patch
 
 from lxml import etree
 
 from odoo.exceptions import UserError
 from odoo.tests.common import TransactionCase
+
+from odoo.addons.account_banking_sepa_credit_transfer.post_install import (
+    update_bank_journals,
+)
 
 
 class TestSCT(TransactionCase):
@@ -171,6 +179,66 @@ class TestSCT(TransactionCase):
     def test_pain_003_03(self):
         self.payment_mode.payment_method_id.pain_version = "pain.001.003.03"
         self.check_eur_currency_sct()
+
+    def test_update_bank_journals(self):
+        sct = self.env.ref("account_banking_sepa_credit_transfer.sepa_credit_transfer")
+        bank_journal = self.journal_model.create(
+            {
+                "name": "Post Init Bank",
+                "type": "bank",
+                "code": "PIB",
+                "company_id": self.main_company.id,
+                "outbound_payment_method_line_ids": [(5, 0, 0)],
+            }
+        )
+        bank_journal.write({"outbound_payment_method_line_ids": [(5, 0, 0)]})
+        bank_journal.invalidate_cache(["outbound_payment_method_line_ids"])
+        self.assertNotIn(
+            sct, bank_journal.outbound_payment_method_line_ids.payment_method_id
+        )
+        update_bank_journals(self.env.cr, self.env.registry)
+        bank_journal.invalidate_cache(["outbound_payment_method_line_ids"])
+        self.assertIn(
+            sct, bank_journal.outbound_payment_method_line_ids.payment_method_id
+        )
+        method_line_count = len(
+            bank_journal.outbound_payment_method_line_ids.filtered(
+                lambda line: line.payment_method_id == sct
+            )
+        )
+        update_bank_journals(self.env.cr, self.env.registry)
+        bank_journal.invalidate_cache(["outbound_payment_method_line_ids"])
+        self.assertEqual(
+            method_line_count,
+            len(
+                bank_journal.outbound_payment_method_line_ids.filtered(
+                    lambda line: line.payment_method_id == sct
+                )
+            ),
+        )
+
+    def test_post_migration_15_0_2_1_0(self):
+        sct = self.env.ref("account_banking_sepa_credit_transfer.sepa_credit_transfer")
+        sct.write({"pain_version": "pain.001.001.03", "warn_not_sepa": False})
+        migration_path = (
+            Path(__file__).parents[1]
+            / "migrations"
+            / "15.0.2.1.0"
+            / "post-migration.py"
+        )
+        spec = importlib.util.spec_from_file_location(
+            "sct_15_0_2_1_0_post_migration", migration_path
+        )
+        migration = importlib.util.module_from_spec(spec)
+        openupgrade = SimpleNamespace(migrate=lambda: (lambda method: method))
+        with patch.dict(
+            "sys.modules",
+            {"openupgradelib": SimpleNamespace(openupgrade=openupgrade)},
+        ):
+            spec.loader.exec_module(migration)
+        migration.migrate(self.env, "15.0.2.0.4")
+        self.assertEqual(sct.pain_version, "pain.001.001.09")
+        self.assertTrue(sct.warn_not_sepa)
 
     def check_eur_currency_sct(self):
         invoice1 = self.create_invoice(
@@ -338,6 +406,12 @@ class TestSCT(TransactionCase):
         self.payment_order.draft2open()
         self.assertEqual(self.payment_order.state, "open")
         self.assertEqual(self.payment_order.sepa, False)
+        self.assertTrue(self.payment_order.sepa_payment_method)
+        self.assertTrue(self.payment_order.show_warning_not_sepa)
+        self.payment_order.payment_method_id.warn_not_sepa = False
+        self.payment_order.invalidate_cache()
+        self.assertFalse(self.payment_order.show_warning_not_sepa)
+        self.payment_order.payment_method_id.warn_not_sepa = True
         self.assertEqual(self.payment_order.payment_count, 1)
         asus_bank_line = self.payment_order.payment_ids[0]
         self.assertEqual(asus_bank_line.currency_id, self.usd_currency)
