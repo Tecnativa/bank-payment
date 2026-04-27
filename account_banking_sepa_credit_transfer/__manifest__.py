@@ -7,7 +7,7 @@
 {
     "name": "Account Banking SEPA Credit Transfer",
     "summary": "Create SEPA XML files for Credit Transfers",
-    "version": "15.0.2.0.4",
+    "version": "15.0.2.1.0",
     "license": "AGPL-3",
     "author": "Akretion, Tecnativa, Therp BV, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/bank-payment",
