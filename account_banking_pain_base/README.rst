@@ -134,7 +134,7 @@ Contributors
   * Manuel Regidor
 
 * `Therp BV <https://www.therp.nl>`_:
-  
+
   * Nikos Tsirintanis <ntsirintanis@therp.nl>
 
 Maintainers

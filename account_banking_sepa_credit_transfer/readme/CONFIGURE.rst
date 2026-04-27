@@ -14,10 +14,10 @@ official schema.
 You must configure the field “PAIN.001.001.09 Address Mode” on the payment
 method:
 
-- **Minimal (City + Country)**  
+- **Minimal (City + Country)**
   Generates only the mandatory structured elements `TwnNm` and `Ctry`.
 
-- **Hybrid (City/Country + AdrLine)**  
+- **Hybrid (City/Country + AdrLine)**
   Generates `TwnNm` and `Ctry`, plus optional `AdrLine` elements for street data.
 
 If no address mode is selected, the default is **Minimal**, which is fully
