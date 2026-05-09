@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-11-23 03:38+0000\n"
-"PO-Revision-Date: 2026-05-09 09:45+0000\n"
+"PO-Revision-Date: 2026-05-09 15:08+0000\n"
 "Last-Translator: Peter Schubert <hello@it-consult.org>\n"
 "Language-Team: German (https://www.transifex.com/oca/teams/23907/de/)\n"
 "Language: de\n"
@@ -280,6 +280,15 @@ msgid ""
 "- a 3-letters business code\n"
 "- a country-specific identifier"
 msgstr ""
+"Geben Sie die Gläubiger-Identifikationsnummer ein, die Ihrem Unternehmen für "
+"die Durchführung von SEPA-Lastschriften zugewiesen wurde. Falls keine "
+"definiert ist, wird die SEPA-Gläubiger-Identifikationsnummer des "
+"Unternehmens verwendet.\n"
+"Diese Kennung setzt sich zusammen aus:\n"
+"- der ISO-Code Ihres Landes (2 Buchstaben)\n"
+"- eine zweistellige Prüfsumme\n"
+"- ein dreistelliger Unternehmenscode\n"
+"- eine länderspezifische Kennung"
 
 #. module: account_banking_sepa_direct_debit
 #: model:ir.model.fields,help:account_banking_sepa_direct_debit.field_res_company__sepa_creditor_identifier
@@ -292,6 +301,13 @@ msgid ""
 "- a 3-letters business code\n"
 "- a country-specific identifier"
 msgstr ""
+"Geben Sie die Gläubiger-Identifikationsnummer ein, die Ihrem Unternehmen für "
+"die Durchführung von SEPA-Lastschriften zugewiesen wurde. Diese "
+"Identifikationsnummer setzt sich zusammen aus:\n"
+"- der ISO-Code Ihres Landes (2 Buchstaben)\n"
+"- eine zweistellige Prüfsumme\n"
+"- ein dreistelliger Unternehmenscode\n"
+"- eine länderspezifische Kennung"
 
 #. module: account_banking_sepa_direct_debit
 #: model:ir.model.fields.selection,name:account_banking_sepa_direct_debit.selection__account_banking_mandate__scheme__b2b
@@ -314,16 +330,18 @@ msgstr "Erstes"
 #, python-format
 msgid "Invalid mandate type in '%s'. Valid ones are 'Recurrent' or 'One-Off'"
 msgstr ""
+"Ungültiger Auftrags-Typ in '%s'. Gültige Typen sind „Wiederkehrend“ oder „"
+"Einmalig“."
 
 #. module: account_banking_sepa_direct_debit
 #: model:ir.model.fields,field_description:account_banking_sepa_direct_debit.field_account_banking_mandate__is_sent
 msgid "Is Sent"
-msgstr ""
+msgstr "Ist gesendet"
 
 #. module: account_banking_sepa_direct_debit
 #: model:ir.model.fields,field_description:account_banking_sepa_direct_debit.field_account_banking_mandate__format
 msgid "Mandate Format"
-msgstr ""
+msgstr "Formate für Mandate"
 
 #. module: account_banking_sepa_direct_debit
 #. odoo-python
@@ -331,13 +349,15 @@ msgstr ""
 #, python-format
 msgid "Mandate automatically set to expired after %d months without use."
 msgstr ""
+"Das Mandat wird nach %d Monaten ohne Nutzung automatisch als abgelaufen "
+"markiert."
 
 #. module: account_banking_sepa_direct_debit
 #. odoo-python
 #: code:addons/account_banking_sepa_direct_debit/models/account_banking_mandate.py:0
 #, python-format
 msgid "Mandate update"
-msgstr ""
+msgstr "Aktualisierung des Mandats"
 
 #. module: account_banking_sepa_direct_debit
 #. odoo-python
@@ -347,6 +367,8 @@ msgid ""
 "Missing SEPA Direct Debit mandate on the line with partner {partner_name} "
 "(reference {reference})."
 msgstr ""
+"Es fehlt ein SEPA-Lastschriftmandat für die Verbindung mit dem Partner "
+"{partner_name} (Referenz {reference})."
 
 #. module: account_banking_sepa_direct_debit
 #: model:ir.model.fields.selection,name:account_banking_sepa_direct_debit.selection__account_banking_mandate__type__oneoff
