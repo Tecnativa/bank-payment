@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-11-23 03:38+0000\n"
-"PO-Revision-Date: 2026-05-09 09:45+0000\n"
+"PO-Revision-Date: 2026-05-09 15:08+0000\n"
 "Last-Translator: Peter Schubert <hello@it-consult.org>\n"
 "Language-Team: German (https://www.transifex.com/oca/teams/23907/de/)\n"
 "Language: de\n"
@@ -225,17 +225,17 @@ msgstr "Wähle die standard Zahlungsmethode für diesen Lieferanten."
 #. module: account_payment_partner
 #: model:ir.model.fields,field_description:account_payment_partner.field_account_payment_mode__show_bank_account
 msgid "Show Bank Account"
-msgstr ""
+msgstr "Bankkonto anzeigen"
 
 #. module: account_payment_partner
 #: model_terms:ir.ui.view,arch_db:account_payment_partner.account_payment_mode_form
 msgid "Show bank account in invoice report"
-msgstr ""
+msgstr "Bankverbindung im Rechnungsbericht anzeigen"
 
 #. module: account_payment_partner
 #: model:ir.model.fields,help:account_payment_partner.field_account_payment_mode__show_bank_account
 msgid "Show in invoices partial or full bank account number"
-msgstr ""
+msgstr "In Rechnungen die Bankkontonummer ganz oder teilweise anzeigen"
 
 #. module: account_payment_partner
 #: model:ir.model.fields,field_description:account_payment_partner.field_res_partner__supplier_payment_mode_id
@@ -248,7 +248,7 @@ msgstr "Zahlungsmethode des Lieferanten"
 #: model:ir.model.fields,help:account_payment_partner.field_account_move__has_reconciled_items
 #: model:ir.model.fields,help:account_payment_partner.field_account_payment__has_reconciled_items
 msgid "Technical field for supporting the editability of the payment mode"
-msgstr ""
+msgstr "Technisches Feld zur Unterstützung der Bearbeitbarkeit der Zahlungsart"
 
 #. module: account_payment_partner
 #: model:ir.model.fields,help:account_payment_partner.field_account_payment_mode__refund_payment_mode_id
@@ -256,6 +256,8 @@ msgid ""
 "This payment mode will be used when doing refunds coming from the current "
 "payment mode."
 msgstr ""
+"Diese Zahlungsart wird bei Rückerstattungen verwendet, die über die "
+"derzeitige Zahlungsart erfolgen."
 
 #. module: account_payment_partner
 #: model:ir.model.fields,help:account_payment_partner.field_res_company__keep_partner_bank_without_payment_mode
@@ -265,6 +267,9 @@ msgid ""
 "auto-selected by Odoo. When disabled, the bank account will be cleared if no "
 "payment mode is set."
 msgstr ""
+"Wenn diese Option aktiviert ist, bleibt bei Rechnungen ohne Zahlungsart das "
+"automatisch ausgewählte Bankkonto erhalten. Wenn diese Option deaktiviert "
+"ist, wird das Bankkonto gelöscht, sofern keine Zahlungsart festgelegt ist."
 
 #. module: account_payment_partner
 #. odoo-python
@@ -274,6 +279,9 @@ msgid ""
 "You cannot change the Company. There exists at least one Journal Entry with "
 "this Payment Mode, already assigned to another Company."
 msgstr ""
+"Sie können den Buchungskreis nicht ändern. Es gibt mindestens einen "
+"Buchungssatz mit dieser Zahlungsart, der bereits einem anderen Buchungskreis "
+"zugeordnet ist."
 
 #. module: account_payment_partner
 #. odoo-python
@@ -283,6 +291,9 @@ msgid ""
 "You cannot change the Company. There exists at least one Journal Item with "
 "this Payment Mode, already assigned to another Company."
 msgstr ""
+"Sie können den Buchungskreis nicht ändern. Es gibt mindestens einen "
+"Buchungssatz mit dieser Zahlungsart, der bereits einem anderen Buchungskreis "
+"zugeordnet ist."
 
 #, fuzzy
 #~ msgid "Bank Account"
