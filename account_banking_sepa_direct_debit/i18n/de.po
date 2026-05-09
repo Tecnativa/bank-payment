@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-11-23 03:38+0000\n"
-"PO-Revision-Date: 2026-05-09 15:10+0000\n"
+"PO-Revision-Date: 2026-05-09 17:45+0000\n"
 "Last-Translator: Peter Schubert <hello@it-consult.org>\n"
 "Language-Team: German (https://www.transifex.com/oca/teams/23907/de/)\n"
 "Language: de\n"
@@ -426,24 +426,24 @@ msgstr "Drucken"
 #: model_terms:ir.ui.view,arch_db:account_banking_sepa_direct_debit.sepa_direct_debit_mandate_document
 #: model_terms:ir.ui.view,arch_db:account_banking_sepa_direct_debit.view_mandate_search
 msgid "Recurrent"
-msgstr ""
+msgstr "Wiederkehrend"
 
 #. module: account_banking_sepa_direct_debit
 #: model:ir.model.fields.selection,name:account_banking_sepa_direct_debit.selection__account_banking_mandate__recurrent_sequence_type__recurring
 msgid "Recurring"
-msgstr ""
+msgstr "Wiederkehrend"
 
 #. module: account_banking_sepa_direct_debit
 #: model:ir.model.fields,field_description:account_banking_sepa_direct_debit.field_account_payment_mode__sepa_creditor_identifier
 #: model:ir.model.fields,field_description:account_banking_sepa_direct_debit.field_res_company__sepa_creditor_identifier
 #: model:ir.model.fields,field_description:account_banking_sepa_direct_debit.field_res_config_settings__sepa_creditor_identifier
 msgid "SEPA Creditor Identifier"
-msgstr ""
+msgstr "SEPA-Gläubiger-Identifikationsnummer"
 
 #. module: account_banking_sepa_direct_debit
 #: model:account.payment.method,name:account_banking_sepa_direct_debit.sepa_direct_debit
 msgid "SEPA Direct Debit for customers"
-msgstr ""
+msgstr "SEPA-Lastschrift für Kunden"
 
 #. module: account_banking_sepa_direct_debit
 #: model:account.payment.mode,name:account_banking_sepa_direct_debit.payment_mode_inbound_sepa_dd1
@@ -453,7 +453,7 @@ msgstr "SEPA Lastschriften der Kunden"
 #. module: account_banking_sepa_direct_debit
 #: model:ir.actions.report,name:account_banking_sepa_direct_debit.report_sepa_direct_debit_mandate
 msgid "SEPA Mandate"
-msgstr ""
+msgstr "SEPA-Einzugsermächtigung"
 
 #. module: account_banking_sepa_direct_debit
 #: model:mail.template,subject:account_banking_sepa_direct_debit.email_template_sepa_mandate
@@ -461,22 +461,24 @@ msgid ""
 "SEPA Mandate {{ object.unique_mandate_reference or 'n/a' }} for {{ object."
 "company_id.name }} is pending to sign"
 msgstr ""
+"Das SEPA-Lastschriftmandat {{ object.unique_mandate_reference oder 'n/a' }} "
+"für {{ object.company_id.name }} muss noch unterzeichnet werden"
 
 #. module: account_banking_sepa_direct_debit
 #: model:mail.template,name:account_banking_sepa_direct_debit.email_template_sepa_mandate
 msgid "SEPA Mandate: Send by email"
-msgstr ""
+msgstr "SEPA-Einzugsermächtigung: Per E-Mail senden"
 
 #. module: account_banking_sepa_direct_debit
 #: model:ir.model.fields,field_description:account_banking_sepa_direct_debit.field_account_banking_mandate__scheme
 #: model_terms:ir.ui.view,arch_db:account_banking_sepa_direct_debit.view_mandate_search
 msgid "Scheme"
-msgstr ""
+msgstr "Schema"
 
 #. module: account_banking_sepa_direct_debit
 #: model_terms:ir.ui.view,arch_db:account_banking_sepa_direct_debit.view_mandate_form
 msgid "Send by Email"
-msgstr ""
+msgstr "Per E-Mail senden"
 
 #. module: account_banking_sepa_direct_debit
 #: model:ir.model.fields.selection,name:account_banking_sepa_direct_debit.selection__account_banking_mandate__format__sepa
@@ -487,17 +489,17 @@ msgstr "Sepa Mandat"
 #: model_terms:ir.ui.view,arch_db:account_banking_sepa_direct_debit.view_mandate_search
 #: model_terms:ir.ui.view,arch_db:account_banking_sepa_direct_debit.view_mandate_tree
 msgid "Sequence Type"
-msgstr ""
+msgstr "Sequenztyp"
 
 #. module: account_banking_sepa_direct_debit
 #: model:ir.model.fields,field_description:account_banking_sepa_direct_debit.field_account_banking_mandate__recurrent_sequence_type
 msgid "Sequence Type for Next Debit"
-msgstr ""
+msgstr "Belegart für die nächste Belastung"
 
 #. module: account_banking_sepa_direct_debit
 #: model:ir.actions.server,name:account_banking_sepa_direct_debit.sdd_mandate_expire_cron_ir_actions_server
 msgid "Set SEPA Direct Debit Mandates to Expired"
-msgstr ""
+msgstr "SEPA-Lastschriftmandate auf „abgelaufen“ setzen"
 
 #. module: account_banking_sepa_direct_debit
 #. odoo-python
@@ -505,7 +507,7 @@ msgstr ""
 #: code:addons/account_banking_sepa_direct_debit/models/res_company.py:0
 #, python-format
 msgid "The SEPA Creditor Identifier '%s' is invalid."
-msgstr ""
+msgstr "Die SEPA-Gläubigerkennung „%s“ ist ungültig."
 
 #. module: account_banking_sepa_direct_debit
 #. odoo-python
@@ -515,6 +517,8 @@ msgid ""
 "The SEPA Direct Debit mandate with reference {mandate_ref} for partner "
 "{partner_name} has expired."
 msgstr ""
+"Das SEPA-Lastschriftmandat mit der Referenz {mandate_ref} für den Partner "
+"{partner_name} ist abgelaufen."
 
 #. module: account_banking_sepa_direct_debit
 #. odoo-python
@@ -525,19 +529,24 @@ msgid ""
 "{partner_name} has type set to 'One-Off' but has a last debit date set to "
 "{last_debit_date}. Therefore, it cannot be used."
 msgstr ""
+"Das SEPA-Lastschriftmandat mit der Referenz {mandate_ref} für den Partner "
+"{partner_name} ist vom Typ „Einmalig“, das Datum der letzten Abbuchung ist "
+"jedoch auf {last_debit_date} festgelegt. Daher kann es nicht verwendet "
+"werden."
 
 #. module: account_banking_sepa_direct_debit
 #. odoo-python
 #: code:addons/account_banking_sepa_direct_debit/models/account_banking_mandate.py:0
 #, python-format
 msgid "The recurrent mandate '%s' must have a sequence type."
-msgstr ""
+msgstr "Das wiederkehrende Mandat „%s“ muss einen Sequenztyp haben."
 
 #. module: account_banking_sepa_direct_debit
 #: model:ir.model.fields,help:account_banking_sepa_direct_debit.field_account_banking_mandate__recurrent_sequence_type
 msgid ""
 "This field is only used for Recurrent mandates, not for One-Off mandates."
 msgstr ""
+"Dieses Feld wird nur für Daueraufträge verwendet, nicht für Einmalaufträge."
 
 #. module: account_banking_sepa_direct_debit
 #: model_terms:ir.ui.view,arch_db:account_banking_sepa_direct_debit.sepa_direct_debit_mandate_document
