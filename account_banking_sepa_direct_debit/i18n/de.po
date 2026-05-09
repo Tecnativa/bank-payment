@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-11-23 03:38+0000\n"
-"PO-Revision-Date: 2026-05-09 15:08+0000\n"
+"PO-Revision-Date: 2026-05-09 15:10+0000\n"
 "Last-Translator: Peter Schubert <hello@it-consult.org>\n"
 "Language-Team: German (https://www.transifex.com/oca/teams/23907/de/)\n"
 "Language: de\n"
@@ -375,12 +375,12 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:account_banking_sepa_direct_debit.sepa_direct_debit_mandate_document
 #: model_terms:ir.ui.view,arch_db:account_banking_sepa_direct_debit.view_mandate_search
 msgid "One-Off"
-msgstr ""
+msgstr "Einmalig"
 
 #. module: account_banking_sepa_direct_debit
 #: model:ir.model.fields,field_description:account_banking_sepa_direct_debit.field_account_payment_method__pain_version
 msgid "PAIN Version"
-msgstr ""
+msgstr "PAIN-Version"
 
 #. module: account_banking_sepa_direct_debit
 #: model:ir.model,name:account_banking_sepa_direct_debit.model_account_payment_line
@@ -412,11 +412,14 @@ msgid ""
 "supported for SEPA Direct Debit are 'pain.008.001.02', 'pain.008.001.03' and "
 "'pain.008.001.04'."
 msgstr ""
+"Der Zahlungsartcode „%s“ wird nicht unterstützt. Die einzigen für das SEPA-"
+"Lastschriftverfahren unterstützten Zahlungsartcodes sind „pain.008.001.02“, „"
+"pain.008.001.03“ und „pain.008.001.04“."
 
 #. module: account_banking_sepa_direct_debit
 #: model_terms:ir.ui.view,arch_db:account_banking_sepa_direct_debit.view_mandate_form
 msgid "Print"
-msgstr ""
+msgstr "Drucken"
 
 #. module: account_banking_sepa_direct_debit
 #: model:ir.model.fields.selection,name:account_banking_sepa_direct_debit.selection__account_banking_mandate__type__recurrent
