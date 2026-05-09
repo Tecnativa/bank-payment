@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-26 01:23+0000\n"
-"PO-Revision-Date: 2026-05-09 09:45+0000\n"
+"PO-Revision-Date: 2026-05-09 15:08+0000\n"
 "Last-Translator: Peter Schubert <hello@it-consult.org>\n"
 "Language-Team: German (https://www.transifex.com/oca/teams/23907/de/)\n"
 "Language: de\n"
@@ -195,17 +195,17 @@ msgstr "Unternehmen"
 #. module: account_banking_pain_base
 #: model:ir.model,name:account_banking_pain_base.model_res_config_settings
 msgid "Config Settings"
-msgstr ""
+msgstr "Konfiguration"
 
 #. module: account_banking_pain_base
 #: model:ir.model.fields.selection,name:account_banking_pain_base.selection__account_payment_line__purpose__comt
 msgid "Consumer Third Party Consolidated Payment"
-msgstr ""
+msgstr "Konsolidierte Zahlung durch Dritte für Verbraucher"
 
 #. module: account_banking_pain_base
 #: model:ir.model.fields.selection,name:account_banking_pain_base.selection__account_payment_line__purpose__cvcf
 msgid "Convalescent Care Facility"
-msgstr ""
+msgstr "Reha-Einrichtung"
 
 #. module: account_banking_pain_base
 #: model:ir.model.fields,field_description:account_banking_pain_base.field_account_payment_method__convert_to_ascii
@@ -215,12 +215,12 @@ msgstr "In ASCII konvertiert"
 #. module: account_banking_pain_base
 #: model:ir.model.fields.selection,name:account_banking_pain_base.selection__account_payment_line__purpose__cpyr
 msgid "Copyright"
-msgstr ""
+msgstr "Urheberrecht"
 
 #. module: account_banking_pain_base
 #: model:ir.model.fields.selection,name:account_banking_pain_base.selection__account_payment_line__purpose__cost
 msgid "Costs"
-msgstr ""
+msgstr "Kosten"
 
 #. module: account_banking_pain_base
 #: model:ir.model.fields.selection,name:account_banking_pain_base.selection__account_payment_line__category_purpose__ccrd
@@ -248,6 +248,9 @@ msgid ""
 "\tcontext: {eval_ctx}\n"
 "\tfield path: {field_value}"
 msgstr ""
+"Daten zur Auswertung:\n"
+"\tKontext: {eval_ctx}\n"
+"\tFeldpfad: {field_value}"
 
 #. module: account_banking_pain_base
 #: model:ir.model.fields.selection,name:account_banking_pain_base.selection__account_payment_line__purpose__dcrd
