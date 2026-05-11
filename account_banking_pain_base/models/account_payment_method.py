@@ -8,7 +8,7 @@ from odoo.exceptions import UserError
 class AccountPaymentMethod(models.Model):
     _inherit = "account.payment.method"
 
-    pain_version = fields.Selection([], string="PAIN Version")
+    pain_version = fields.Selection([], string="PAIN Version", copy=False)
     convert_to_ascii = fields.Boolean(
         string="Convert to ASCII",
         default=True,
@@ -17,6 +17,21 @@ class AccountPaymentMethod(models.Model):
         "characters are used in the generated PAIN file.",
     )
     warn_not_sepa = fields.Boolean(string="Warn If Not SEPA")
+    sepa_pain09_address_mode = fields.Selection(
+        [
+            ("minimal", "Minimal (City + Country only)"),
+            ("hybrid", "Hybrid (City/Country + AdrLine)"),
+        ],
+        default="minimal",
+        required=True,
+        string="PAIN.001.001.09 Address Mode",
+        help=(
+            "Controls how the <PstlAdr> block is generated for "
+            "PAIN.001.001.09. Minimal keeps City (TwnNm) and Country "
+            "(Ctry) only. Hybrid adds AdrLine values for street and "
+            "street2, plus PstCd when available."
+        ),
+    )
 
     def get_xsd_file_path(self):
         """This method is designed to be inherited in the SEPA modules"""

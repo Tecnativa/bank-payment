@@ -43,6 +43,42 @@ class TestSCT(AccountTestInvoicingCommon):
         cls.partner_agrolait.company_id = cls.main_company.id
         cls.partner_asus.company_id = cls.main_company.id
         cls.partner_c2c.company_id = cls.main_company.id
+        cls.main_company.partner_id.write(
+            {
+                "street": "Company Street 1",
+                "street2": "Suite 2",
+                "zip": "1000",
+                "city": "Amsterdam",
+                "country_id": cls.env.ref("base.nl").id,
+            }
+        )
+        cls.partner_agrolait.write(
+            {
+                "street": "Agrolait Street 1",
+                "street2": "Suite 2",
+                "zip": "1000",
+                "city": "Brussels",
+                "country_id": cls.env.ref("base.be").id,
+            }
+        )
+        cls.partner_asus.write(
+            {
+                "street": "Asus Street 1",
+                "street2": "Suite 2",
+                "zip": "1000",
+                "city": "Brussels",
+                "country_id": cls.env.ref("base.be").id,
+            }
+        )
+        cls.partner_c2c.write(
+            {
+                "street": "C2C Street 1",
+                "street2": "Suite 2",
+                "zip": "1000",
+                "city": "Brussels",
+                "country_id": cls.env.ref("base.be").id,
+            }
+        )
         cls.account_expense = cls.company_data["default_account_expense"]
         cls.account_payable = cls.company_data["default_account_payable"]
         (cls.partner_asus + cls.partner_c2c + cls.partner_agrolait).with_company(
@@ -104,6 +140,24 @@ class TestSCT(AccountTestInvoicingCommon):
                 "name": "Test Partner 2",
             }
         )
+        cls.partner_1.write(
+            {
+                "street": "Partner One Street 1",
+                "street2": "Suite 2",
+                "zip": "1000",
+                "city": "Brussels",
+                "country_id": cls.env.ref("base.be").id,
+            }
+        )
+        cls.partner_2.write(
+            {
+                "street": "Partner Two Street 1",
+                "street2": "Suite 2",
+                "zip": "1000",
+                "city": "Brussels",
+                "country_id": cls.env.ref("base.be").id,
+            }
+        )
         cls.partner_bank_2 = cls.env["res.partner.bank"].create(
             {
                 "acc_number": "BE96 9988 7766 5544",
@@ -112,6 +166,9 @@ class TestSCT(AccountTestInvoicingCommon):
             }
         )
         cls.bank_journal = cls.company_data["default_journal_bank"]
+        sepa_ct_method = cls.env.ref(
+            "account_banking_sepa_credit_transfer.sepa_credit_transfer"
+        )
         cls.bank_journal.write(
             {
                 "bank_account_id": cls.partner_bank.id,
@@ -119,9 +176,7 @@ class TestSCT(AccountTestInvoicingCommon):
                 "outbound_payment_method_line_ids": [
                     Command.create(
                         {
-                            "payment_method_id": cls.env.ref(
-                                "account_banking_sepa_credit_transfer.sepa_credit_transfer"
-                            ).id,
+                            "payment_method_id": sepa_ct_method.id,
                             "payment_account_id": cls.env["account.chart.template"]
                             .ref("account_journal_payment_credit_account_id")
                             .id,
@@ -136,9 +191,7 @@ class TestSCT(AccountTestInvoicingCommon):
             {
                 "name": "SEPA Credit Transfer to suppliers",
                 "company_id": cls.main_company.id,
-                "payment_method_id": cls.env.ref(
-                    "account_banking_sepa_credit_transfer.sepa_credit_transfer"
-                ).id,
+                "payment_method_id": sepa_ct_method.id,
                 "bank_account_link": "fixed",
                 "fixed_journal_id": cls.bank_journal.id,
             }
@@ -161,6 +214,24 @@ class TestSCT(AccountTestInvoicingCommon):
 
     def test_pain_001_05(self):
         self.payment_mode.payment_method_id.pain_version = "pain.001.001.05"
+        self.check_eur_currency_sct()
+
+    def test_pain_001_09_minimal_address(self):
+        self.payment_mode.payment_method_id.write(
+            {
+                "pain_version": "pain.001.001.09",
+                "sepa_pain09_address_mode": "minimal",
+            }
+        )
+        self.check_eur_currency_sct()
+
+    def test_pain_001_09_hybrid_address(self):
+        self.payment_mode.payment_method_id.write(
+            {
+                "pain_version": "pain.001.001.09",
+                "sepa_pain09_address_mode": "hybrid",
+            }
+        )
         self.check_eur_currency_sct()
 
     def test_pain_003_03(self):
@@ -257,6 +328,19 @@ class TestSCT(AccountTestInvoicingCommon):
         namespaces = xml_root.nsmap
         namespaces["p"] = xml_root.nsmap[None]
         namespaces.pop(None)
+        if self.payment_mode.payment_method_id.pain_version == "pain.001.001.09":
+            twn = xml_root.xpath("//p:PstlAdr/p:TwnNm", namespaces=namespaces)
+            ctry = xml_root.xpath("//p:PstlAdr/p:Ctry", namespaces=namespaces)
+            pstcd = xml_root.xpath("//p:PstlAdr/p:PstCd", namespaces=namespaces)
+            adr_lines = xml_root.xpath("//p:PstlAdr/p:AdrLine", namespaces=namespaces)
+            self.assertTrue(twn)
+            self.assertTrue(ctry)
+            if self.payment_mode.payment_method_id.sepa_pain09_address_mode == "hybrid":
+                self.assertTrue(pstcd)
+                self.assertGreaterEqual(len(adr_lines), 1)
+            else:
+                self.assertFalse(pstcd)
+                self.assertEqual(len(adr_lines), 0)
         pay_method_xpath = xml_root.xpath("//p:PmtInf/p:PmtMtd", namespaces=namespaces)
         self.assertEqual(pay_method_xpath[0].text, "TRF")
         sepa_xpath = xml_root.xpath(

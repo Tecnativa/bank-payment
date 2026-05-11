@@ -47,6 +47,10 @@ class AccountPaymentOrder(models.Model):
             bic_xml_tag = "BICFI"
             name_maxsize = 140
             root_xml_tag = "CstmrCdtTrfInitn"
+        elif pain_flavor.startswith("pain.001.001.09"):
+            bic_xml_tag = "BICFI"
+            name_maxsize = 140
+            root_xml_tag = "CstmrCdtTrfInitn"
         # added pain.001.003.03 for German Banks
         # it is not in the offical ISO 20022 documentations, but nearly all
         # german banks are working with this instead 001.001.03

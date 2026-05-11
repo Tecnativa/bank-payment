@@ -1,5 +1,6 @@
 from lxml import etree
 
+from odoo import fields
 from odoo.exceptions import UserError
 
 from odoo.addons.base.tests.common import BaseCommon
@@ -47,6 +48,15 @@ class TestPainBase(BaseCommon):
                 "name": "Test Company",
                 "country_id": cls.env.ref("base.be").id,
                 "vat": "BE0477472701",
+            }
+        )
+        cls.company.partner_id.write(
+            {
+                "street": "Company Street 1",
+                "street2": "Suite 2",
+                "zip": "1000",
+                "city": "Amsterdam",
+                "country_id": cls.env.ref("base.be").id,
             }
         )
 
@@ -99,6 +109,99 @@ class TestPainBase(BaseCommon):
         res = self.order.generate_address_block(parent, self.partner, self.gen_args)
         self.assertTrue(res)
         self.assertIsNotNone(parent.find("PstlAdr"))
+
+    def test_generate_address_block_pain09_minimal(self):
+        country = self.env["res.country"].search([("code", "=", "NL")], limit=1)
+        partner = self.env["res.partner"].create(
+            {
+                "name": "Hybrid Partner 09",
+                "street": "Oudestraat 1",
+                "street2": "2/2.14",
+                "zip": "3942 NR",
+                "city": "Adelala",
+                "country_id": country.id,
+            }
+        )
+        self.Mode.payment_method_id.sepa_pain09_address_mode = "minimal"
+        gen_args = {"pain_flavor": "pain.001.001.09"}
+        root = etree.Element("Root")
+        self.order.generate_address_block(root, partner, gen_args)
+        pstl = root.find("PstlAdr")
+        self.assertIsNotNone(pstl)
+        self.assertEqual(pstl.find("TwnNm").text, partner.city)
+        self.assertEqual(pstl.find("Ctry").text, partner.country_id.code)
+        self.assertIsNone(pstl.find("PstCd"))
+        self.assertEqual(len(pstl.findall("AdrLine")), 0)
+
+    def test_generate_address_block_pain09_requires_city(self):
+        country = self.env["res.country"].search([("code", "=", "NL")], limit=1)
+        partner = self.env["res.partner"].create(
+            {
+                "name": "Hybrid Partner 09 No City",
+                "street": "Oudestraat 1",
+                "zip": "3842 NK",
+                "city": False,
+                "country_id": country.id,
+            }
+        )
+        gen_args = {"pain_flavor": "pain.001.001.09"}
+        root = etree.Element("Root")
+        with self.assertRaises(UserError):
+            self.order.generate_address_block(root, partner, gen_args)
+
+    def test_generate_address_block_pain09_hybrid(self):
+        country = self.env["res.country"].search([("code", "=", "NL")], limit=1)
+        partner = self.env["res.partner"].create(
+            {
+                "name": "Hybrid Partner 09 Hybrid",
+                "street": "Oudestraat 1",
+                "street2": "2/2.14",
+                "zip": "3942 NR",
+                "city": "Adelala",
+                "country_id": country.id,
+            }
+        )
+        self.Mode.payment_method_id.sepa_pain09_address_mode = "hybrid"
+        gen_args = {"pain_flavor": "pain.001.001.09"}
+        root = etree.Element("Root")
+        self.order.generate_address_block(root, partner, gen_args)
+        pstl = root.find("PstlAdr")
+        self.assertIsNotNone(pstl)
+        tags = [c.tag for c in list(pstl)]
+        self.assertEqual(tags[0], "PstCd")
+        self.assertEqual(tags[1], "TwnNm")
+        self.assertEqual(tags[2], "Ctry")
+        self.assertEqual(pstl.find("PstCd").text, partner.zip)
+        self.assertEqual(pstl.find("TwnNm").text, partner.city)
+        self.assertEqual(pstl.find("Ctry").text, partner.country_id.code)
+        adr_lines = pstl.findall("AdrLine")
+        self.assertEqual(len(adr_lines), 2)
+        self.assertEqual(adr_lines[0].text, partner.street)
+        self.assertEqual(adr_lines[1].text, partner.street2)
+
+    def test_requested_date_pain09(self):
+        root = etree.Element("Root")
+        gen_args = {"pain_flavor": "pain.001.001.09", "payment_method": "TRF"}
+        requested_date = fields.Date.to_string(fields.Date.today())
+        (
+            payment_info,
+            nb_of_transactions,
+            control_sum,
+        ) = self.order.generate_start_payment_info_block(
+            parent_node=root,
+            payment_info_ident="'TEST'",
+            priority=False,
+            local_instrument=False,
+            category_purpose=False,
+            sequence_type=False,
+            requested_date=requested_date,
+            eval_ctx={},
+            gen_args=gen_args,
+        )
+        self.assertIsNotNone(payment_info.find("ReqdExctnDt"))
+        dt = payment_info.find("ReqdExctnDt/Dt")
+        self.assertIsNotNone(dt)
+        self.assertEqual(dt.text, requested_date)
 
     def test_default_initiating_party(self):
         self.company._default_initiating_party()
